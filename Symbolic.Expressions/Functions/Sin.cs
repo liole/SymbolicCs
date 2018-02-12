@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Symbolic.Expressions.Functions
+{
+	public class Sin : Function
+	{
+		public override string Name => "sin";
+
+		public Sin(Expression arg):
+			base(arg)
+		{
+		}
+	}
+}

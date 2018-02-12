@@ -49,7 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LiteralsTest.cs" />
-    <Compile Include="ExpressionsTest.cs" />
+    <Compile Include="FunctionsTest.cs" />
+    <Compile Include="SymbolsTest.cs" />
+    <Compile Include="OperatorsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

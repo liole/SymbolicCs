@@ -8,7 +8,7 @@ namespace Symbolic.Expressions.Literals
 {
 	public class Integer: Literal
 	{
-		public int Value { get; protected set; }
+		public int Value { get; set; }
 		public Integer(int val)
 		{
 			Value = val;

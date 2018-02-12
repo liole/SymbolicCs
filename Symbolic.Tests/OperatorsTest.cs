@@ -7,14 +7,8 @@ using Symbolic.Expressions.Operators;
 namespace Symbolic.Tests
 {
 	[TestClass]
-	public class ExpressionsTest
+	public class OperatorsTest
 	{
-		[TestMethod]
-		public void SymbolCreate()
-		{
-			var x = new Symbol("x");
-			Assert.AreEqual("x", x.ToString());
-		}
 		[TestMethod]
 		public void OperatorCreate()
 		{

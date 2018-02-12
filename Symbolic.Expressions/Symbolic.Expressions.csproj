@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Expression.cs" />
+    <Compile Include="Function.cs" />
+    <Compile Include="Functions\Cos.cs" />
+    <Compile Include="Functions\Sqrt.cs" />
+    <Compile Include="Functions\Sin.cs" />
     <Compile Include="Literal.cs" />
     <Compile Include="Literals\Integer.cs" />
     <Compile Include="BinaryOperator.cs" />
@@ -48,9 +52,11 @@
     <Compile Include="Operators\Divide.cs" />
     <Compile Include="Operators\Times.cs" />
     <Compile Include="Operators\Plus.cs" />
+    <Compile Include="SeparatorType.cs" />
     <Compile Include="ParentesisType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Symbol.cs" />
+    <Compile Include="Underscore.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

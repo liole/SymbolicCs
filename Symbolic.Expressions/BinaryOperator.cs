@@ -11,8 +11,10 @@ namespace Symbolic.Expressions
 		public static BracketsType BracketsType = BracketsType.Round;
 		public abstract string Sign { get; }
 		public abstract int Priority { get; }
+
 		public Expression Left { get; set; }
 		public Expression Right { get; set; }
+
 		public BinaryOperator(Expression left, Expression right)
 		{
 			Left = left;
