@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Symbolic.Operations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,21 +7,32 @@ using System.Threading.Tasks;
 
 namespace Symbolic.Expressions
 {
-	public abstract class BinaryOperator : Expression
+	public abstract class BinaryOperator : Function
 	{
-		public static BracketsType BracketsType = BracketsType.Round;
+		public static new BracketsType BracketsType = BracketsType.Round;
 		public abstract string Sign { get; }
 		public abstract int Priority { get; }
+		public override string Name => Sign;
 
-		public Expression Left { get; set; }
-		public Expression Right { get; set; }
-
-		public BinaryOperator(Expression left, Expression right)
+		public Expression Left
 		{
-			Left = left;
-			Right = right;
+			get => Arguments[0];
+			set => Arguments[0] = value;
+		}
+		public Expression Right
+		{
+			get => Arguments[1];
+			set => Arguments[1] = value;
 		}
 
+		public BinaryOperator(Expression left, Expression right):
+			base(left, right)
+		{
+		}
+		public override Expression Perform(Operation operation)
+		{
+			return operation.On(this);
+		}
 		public string ToString(bool brackets)
 		{
 			var sb = new StringBuilder();

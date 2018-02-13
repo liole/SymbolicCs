@@ -49,9 +49,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Symbolic.Expressions\Symbolic.Expressions.csproj">
+    <ProjectReference Include="..\Symbolic\Symbolic.csproj">
       <Project>{4327066f-18bd-4529-aadd-e7ddff27a42d}</Project>
-      <Name>Symbolic.Expressions</Name>
+      <Name>Symbolic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

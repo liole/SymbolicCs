@@ -1,11 +1,12 @@
-﻿using Symbolic.Expressions.Functions;
+﻿using Symbolic.Expressions;
+using Symbolic.Expressions.Functions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Symbolic.Expressions
+namespace Symbolic
 {
 	public static partial class _
 	{

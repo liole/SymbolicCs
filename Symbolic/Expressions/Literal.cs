@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Symbolic.Operations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,9 @@ namespace Symbolic.Expressions
 {
 	public abstract class Literal: Expression
 	{
+		public override Expression Perform(Operation operation)
+		{
+			return operation.On(this);
+		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Symbolic.Operations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,10 @@ namespace Symbolic.Expressions.Operators
 		public Minus(Expression left, Expression right) :
 			base(left, right)
 		{
+		}
+		public override Expression Perform(Operation operation)
+		{
+			return operation.On(this);
 		}
 	}
 }

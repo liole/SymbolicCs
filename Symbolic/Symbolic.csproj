@@ -7,8 +7,8 @@
     <ProjectGuid>{4327066F-18BD-4529-AADD-E7DDFF27A42D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Symbolic.Expressions</RootNamespace>
-    <AssemblyName>Symbolic.Expressions</AssemblyName>
+    <RootNamespace>Symbolic</RootNamespace>
+    <AssemblyName>Symbolic</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,23 +40,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Expression.cs" />
-    <Compile Include="Function.cs" />
-    <Compile Include="Functions\Cos.cs" />
-    <Compile Include="Functions\Sqrt.cs" />
-    <Compile Include="Functions\Sin.cs" />
-    <Compile Include="Literal.cs" />
-    <Compile Include="Literals\Integer.cs" />
-    <Compile Include="BinaryOperator.cs" />
-    <Compile Include="Operators\Minus.cs" />
-    <Compile Include="Operators\Divide.cs" />
-    <Compile Include="Operators\Times.cs" />
-    <Compile Include="Operators\Plus.cs" />
-    <Compile Include="SeparatorType.cs" />
-    <Compile Include="ParentesisType.cs" />
+    <Compile Include="Expressions\Expression.cs" />
+    <Compile Include="Expressions\Function.cs" />
+    <Compile Include="Expressions\Functions\Cos.cs" />
+    <Compile Include="Expressions\Functions\Sqrt.cs" />
+    <Compile Include="Expressions\Functions\Sin.cs" />
+    <Compile Include="Expressions\Literal.cs" />
+    <Compile Include="Expressions\Literals\Logical.cs" />
+    <Compile Include="Expressions\Literals\Integer.cs" />
+    <Compile Include="Expressions\BinaryOperator.cs" />
+    <Compile Include="Expressions\Operators\Minus.cs" />
+    <Compile Include="Expressions\Operators\Divide.cs" />
+    <Compile Include="Expressions\Operators\Times.cs" />
+    <Compile Include="Expressions\Operators\Plus.cs" />
+    <Compile Include="Expressions\SeparatorType.cs" />
+    <Compile Include="Expressions\ParentesisType.cs" />
+    <Compile Include="Operations\Operation.cs" />
+    <Compile Include="Operations\Same.cs" />
+    <Compile Include="Operations\Underscore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Symbol.cs" />
-    <Compile Include="Underscore.cs" />
+    <Compile Include="Expressions\Symbol.cs" />
+    <Compile Include="Expressions\Underscore.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

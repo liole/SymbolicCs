@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Symbolic.Operations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,10 @@ namespace Symbolic.Expressions
 		{
 			Arguments = args;
 		}
-
+		public override Expression Perform(Operation operation)
+		{
+			return operation.On(this);
+		}
 		public override string ToString()
 		{
 			var sb = new StringBuilder();
