@@ -7,26 +7,21 @@ using System.Threading.Tasks;
 
 namespace Symbolic.Expressions
 {
-	public abstract class BinaryOperator : Function
+	public abstract class UnaryOperator : Function
 	{
 		public static new BracketsType BracketsType = BracketsType.Round;
 		public abstract string Sign { get; }
 		public abstract int Priority { get; }
 		public override string Name => Sign;
 
-		public Expression Left
+		public Expression Argument
 		{
 			get => Arguments[0];
 			set => Arguments[0] = value;
 		}
-		public Expression Right
-		{
-			get => Arguments[1];
-			set => Arguments[1] = value;
-		}
 
-		public BinaryOperator(Expression left, Expression right):
-			base(left, right)
+		public UnaryOperator(Expression arg):
+			base(arg)
 		{
 		}
 		public override Expression Perform(Operation operation)
@@ -40,28 +35,20 @@ namespace Symbolic.Expressions
 			{
 				sb.Append(BracketsType.Open());
 			}
-			if (Left is BinaryOperator)
-			{
-				var leftBO = Left as BinaryOperator;
-				sb.Append(leftBO.ToString(Priority > leftBO.Priority+1));
-			} else
-			{
-				sb.Append(Left.ToString());
-			}
+
 			sb.Append(Sign);
-			if (Right is BinaryOperator)
+			if (Argument is BinaryOperator)
 			{
-				var rightBO = Right as BinaryOperator;
-				sb.Append(rightBO.ToString(Priority > rightBO.Priority));
-			}
-			else if (Right is UnaryOperator)
+				var bo = Argument as BinaryOperator;
+				sb.Append(bo.ToString(Priority >= bo.Priority));
+			} else if (Argument is UnaryOperator)
 			{
-				var rightUO = Right as UnaryOperator;
-				sb.Append(rightUO.ToString(true));
+				var uo = Argument as UnaryOperator;
+				sb.Append(uo.ToString(Priority >= uo.Priority));
 			}
 			else
 			{
-				sb.Append(Right.ToString());
+				sb.Append(Argument.ToString());
 			}
 			if (brackets)
 			{

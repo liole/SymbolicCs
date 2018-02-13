@@ -9,7 +9,7 @@ using Symbolic.Expressions.Operators;
 
 namespace Symbolic.Operations
 {
-	public class Same: Operation
+	class Same: Operation
 	{
 		public Expression Source { get; set; }
 
@@ -42,7 +42,7 @@ namespace Symbolic.Operations
 					sbo.Arguments.Length == e.Arguments.Length &&
 					Enumerable.Zip(sbo.Arguments, e.Arguments,
 						(sa, ea) => _.Same(ea, sa))
-						.All(same => (bool)same);
+						.All(same => same);
 			}
 			return false;
 		}

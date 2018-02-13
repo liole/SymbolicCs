@@ -17,10 +17,12 @@ namespace Symbolic.Tests
 			var minus = x - 2;
 			var times = x * 3;
 			var divide = x / 4;
+			var unaryM = -x;
 			Assert.IsInstanceOfType(plus, typeof(Plus));
 			Assert.IsInstanceOfType(minus, typeof(Minus));
 			Assert.IsInstanceOfType(times, typeof(Times));
 			Assert.IsInstanceOfType(divide, typeof(Divide));
+			Assert.IsInstanceOfType(unaryM, typeof(UnaryMinus));
 
 			var res = plus as BinaryOperator;
 			Assert.AreEqual(x, res.Left);
@@ -49,6 +51,19 @@ namespace Symbolic.Tests
 			var res2 = (x + 3) * x;
 			Assert.AreEqual("x+3*x", res1.ToString());
 			Assert.AreEqual("(x+3)*x", res2.ToString());
+		}
+		[TestMethod]
+		public void OperatorBrackets2()
+		{
+			var x = new Symbol("x");
+			var res1 = x + 3 - x;
+			var res2 = -(x + 3) * x;
+			var res3 = x / 3 * x;
+			var res4 = x / (3 * x);
+			Assert.AreEqual("x+3-x", res1.ToString());
+			Assert.AreEqual("-(x+3)*x", res2.ToString());
+			Assert.AreEqual("x/3*x", res3.ToString());
+			Assert.AreEqual("x/(3*x)", res4.ToString());
 		}
 	}
 }

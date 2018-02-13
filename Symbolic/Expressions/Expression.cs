@@ -35,5 +35,9 @@ namespace Symbolic.Expressions
 		{
 			return new Divide(left, right);
 		}
+		public static Expression operator -(Expression arg)
+		{
+			return new UnaryMinus(arg);
+		}
 	}
 }

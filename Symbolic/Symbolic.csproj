@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Expressions\Operators\UnaryMinus.cs" />
+    <Compile Include="Expressions\UnaryOperator.cs" />
     <Compile Include="Expressions\Expression.cs" />
     <Compile Include="Expressions\Function.cs" />
     <Compile Include="Expressions\Functions\Cos.cs" />
@@ -55,7 +57,11 @@
     <Compile Include="Expressions\Operators\Plus.cs" />
     <Compile Include="Expressions\SeparatorType.cs" />
     <Compile Include="Expressions\ParentesisType.cs" />
+    <Compile Include="Operations\Calculate.cs" />
+    <Compile Include="Operations\Clone.cs" />
+    <Compile Include="Operations\Extensions.cs" />
     <Compile Include="Operations\Operation.cs" />
+    <Compile Include="Operations\Simplify.cs" />
     <Compile Include="Operations\Same.cs" />
     <Compile Include="Operations\Underscore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

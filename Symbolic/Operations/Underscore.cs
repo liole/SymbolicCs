@@ -11,9 +11,21 @@ namespace Symbolic
 {
 	public static partial class _
 	{
-		public static Logical Same(Expression e1, Expression e2)
+		public static bool Same(Expression e1, Expression e2)
 		{
-			return e1.Perform(new Same(e2)) as Logical;
+			return (bool)(e1.Perform(new Same(e2)) as Logical);
+		}
+		public static Expression Clone(Expression e)
+		{
+			return e.Perform(new Clone());
+		}
+		public static Expression Calculate(Expression e)
+		{
+			return e.Perform(new Calculate());
+		}
+		public static Expression Simplify(Expression e)
+		{
+			return e.Perform(new Simplify());
 		}
 	}
 }

@@ -51,6 +51,9 @@
     <Compile Include="LiteralsTest.cs" />
     <Compile Include="FunctionsTest.cs" />
     <Compile Include="SameOperationTest.cs" />
+    <Compile Include="CloneOperationTest.cs" />
+    <Compile Include="CalculateOperationTest.cs" />
+    <Compile Include="SimplifyOperationTest.cs" />
     <Compile Include="SymbolsTest.cs" />
     <Compile Include="OperatorsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

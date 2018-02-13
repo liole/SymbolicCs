@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Symbolic.Expressions.Operators
 {
-	public class Divide : BinaryOperator
+	public class UnaryMinus: UnaryOperator
 	{
-		public override string Sign => "/";
-		public override int Priority => 4;
+		public override string Sign => "-";
+		public override int Priority => 2;
 
-		public Divide(Expression left, Expression right) :
-			base(left, right)
+		public UnaryMinus(Expression arg) :
+			base(arg)
 		{
 		}
 		public override Expression Perform(Operation operation)

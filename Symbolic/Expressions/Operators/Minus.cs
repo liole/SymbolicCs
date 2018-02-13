@@ -10,7 +10,7 @@ namespace Symbolic.Expressions.Operators
 	public class Minus : BinaryOperator
 	{
 		public override string Sign => "-";
-		public override int Priority => 1;
+		public override int Priority => 2;
 
 		public Minus(Expression left, Expression right) :
 			base(left, right)
