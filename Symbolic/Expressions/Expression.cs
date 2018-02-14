@@ -17,6 +17,8 @@ namespace Symbolic.Expressions
 			return operation.On(this);
 		}
 
+		public static implicit operator Expression(string src) => (Symbol)src;
+
 		public static implicit operator Expression(int src) => (Integer)src;
 		public static implicit operator Expression(double src) => (Real)src;
 		public static implicit operator Expression(bool src) => (Logical)src;

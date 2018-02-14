@@ -9,6 +9,12 @@ namespace Symbolic.Operations
 {
 	public static class Extensions
 	{
+		public static IEnumerable<Symbol> Symbols(this Expression e)
+		{
+			var vars = new VariableCollector();
+			e.Perform(vars);
+			return vars.Symbols;
+		}
 		public static Expression Clone(this Expression e)
 		{
 			return _.Clone(e);
@@ -20,6 +26,14 @@ namespace Symbolic.Operations
 		public static Expression Simplify(this Expression e)
 		{
 			return _.Simplify(e);
+		}
+		public static Expression Prime(this Expression e, Symbol var)
+		{
+			return _.Derivative(e, var);
+		}
+		public static Expression Prime(this Expression e)
+		{
+			return _.Derivative(e);
 		}
 	}
 }

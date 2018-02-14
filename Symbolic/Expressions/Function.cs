@@ -14,6 +14,7 @@ namespace Symbolic.Expressions
 		public abstract string Name { get; }
 
 		public Expression[] Arguments { get; protected set; }
+		public virtual Expression Argument => Arguments[0];
 
 		public Function (params Expression[] args)
 		{

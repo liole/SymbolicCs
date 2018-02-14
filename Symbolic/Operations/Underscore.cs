@@ -27,5 +27,26 @@ namespace Symbolic
 		{
 			return e.Perform(new Simplify());
 		}
+		public static Expression Derivative(Expression e, Symbol var)
+		{
+			return e.Perform(new Derivative(var)).Simplify();
+		}
+		public static Expression Derivative(Expression e)
+		{
+			var syms = e.Symbols();
+			if (syms.Count() == 0)
+			{
+				return 0;
+			}
+			return Derivative(e, syms.Single());
+		}
+		public static Expression D(Expression e, Symbol var)
+		{
+			return Derivative(e, var);
+		}
+		public static Expression D(Expression e)
+		{
+			return Derivative(e);
+		}
 	}
 }

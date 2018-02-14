@@ -15,6 +15,10 @@ namespace Symbolic.Expressions.Functions
 			base(arg, _.E)
 		{
 		}
+		public Ln(Expression arg, Expression ignoring): // for operation compatibility
+			this(arg)
+		{
+		}
 		public override Expression Perform(Operation operation)
 		{
 			return operation.On(this);
