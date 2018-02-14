@@ -13,7 +13,7 @@ namespace Symbolic.Expressions
 		public static SeparatorType SeparatorType = SeparatorType.Comma;
 		public abstract string Name { get; }
 
-		public Expression[] Arguments { get; set; }
+		public Expression[] Arguments { get; protected set; }
 
 		public Function (params Expression[] args)
 		{

@@ -7,32 +7,35 @@ using System.Threading.Tasks;
 
 namespace Symbolic.Expressions.Literals
 {
-	public class Integer: Real
+	public class Real: Literal
 	{
-		//TODO: store only one Value (object?)
-		public new int Value { get; protected set; }
+		public virtual double Value { get; protected set; }
 
-		public Integer(int val):
-			base(val)
+		public Real(double val)
 		{
 			Value = val;
 		}
 
-		public static explicit operator int(Integer src)
+		public static explicit operator double(Real src)
 		{
 			return src.Value;
 		}
 
-		public static implicit operator Integer(int src)
+		public static implicit operator Real(double src)
 		{
+			// this should not work but it does!
 			switch (src)
 			{
-				case 0:
-					return _.Zero as Integer;
-				case 1:
-					return _.One as Integer;
+				case 0.0:
+					return _.Zero as Real;
+				case 1.0:
+					return _.One as Real;
+				case Math.E:
+					return _.E as Real;
+				case Math.PI:
+					return _.Pi as Real;
 				default:
-					return new Integer(src);
+					return new Real(src);
 			}
 		}
 

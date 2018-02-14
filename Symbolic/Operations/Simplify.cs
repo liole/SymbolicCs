@@ -4,13 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Symbolic.Expressions;
-using Symbolic.Expressions.Literals;
+using Symbolic.Expressions.Functions;
 using Symbolic.Expressions.Operators;
 
 namespace Symbolic.Operations
 {
 	class Simplify : Calculate
 	{
+		public override Expression On(Pow e)
+		{
+			var res = base.On(e);
+			if (res is Pow)
+			{
+				var resB = res as Pow;
+				if (_.Same(resB.Arguments[0], 0))
+				{
+					return 0;
+				}
+				if (_.Same(resB.Arguments[1], 0))
+				{
+					return 1;
+				}
+				if (_.Same(resB.Arguments[1], 1))
+				{
+					return resB.Arguments[0];
+				}
+				if (_.Same(resB.Arguments[1], 0.5)) // simplification ?
+				{
+					return _.Sqrt(resB.Arguments[0]);
+				}
+			}
+			return res;
+		}
 		public override Expression On(Plus e)
 		{
 			var res = base.On(e);
@@ -71,7 +96,7 @@ namespace Symbolic.Operations
 			var res = base.On(e);
 			if (res is Divide)
 			{
-				var resB = res as Divide;
+				var resB = res as Divide; 
 				if (_.Same(resB.Left, 0))
 				{
 					return 0;

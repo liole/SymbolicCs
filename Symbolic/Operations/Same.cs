@@ -28,6 +28,13 @@ namespace Symbolic.Operations
 			return Source is Integer &&
 				(Source as Integer).Value == e.Value;
 		}
+		public override Expression On(Real e)
+		{
+			return Source is Real &&
+				(Source as Real).Value == e.Value || // this may fail for doubles
+				Source is IConstant && e is IConstant &&
+				Source.GetType() == e.GetType();
+		}
 		public override Expression On(Logical e)
 		{
 			return Source is Logical &&

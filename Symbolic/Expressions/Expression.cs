@@ -1,4 +1,5 @@
 ﻿using Symbolic.Expressions.Literals;
+using Symbolic.Expressions.Literals.Constants;
 using Symbolic.Expressions.Operators;
 using Symbolic.Operations;
 using System;
@@ -17,6 +18,7 @@ namespace Symbolic.Expressions
 		}
 
 		public static implicit operator Expression(int src) => (Integer)src;
+		public static implicit operator Expression(double src) => (Real)src;
 		public static implicit operator Expression(bool src) => (Logical)src;
 
 		public static Expression operator +(Expression left, Expression right)

@@ -14,6 +14,7 @@ namespace Symbolic.Operations
 	{
 		public override Expression On(Symbol e) => new Symbol(e.Name);
 		public override Expression On(Integer e) => new Integer(e.Value);
+		public override Expression On(Real e) => new Real(e.Value);
 		public override Expression On(Logical e) => new Logical(e.Value);
 		public override Expression On(Function e)
 		{

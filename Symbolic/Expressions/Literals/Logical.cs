@@ -10,6 +10,7 @@ namespace Symbolic.Expressions.Literals
 	public class Logical: Literal
 	{
 		public bool Value { get; set; }
+
 		public Logical(bool val)
 		{
 			Value = val;

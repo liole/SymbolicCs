@@ -26,8 +26,10 @@ namespace Symbolic.Tests
 		public void FunctionString()
 		{
 			var x = new Symbol("x");
-			var res = _.Sqrt(x);
-			Assert.AreEqual("sqrt[x]", res.ToString());
+			var res1 = _.Sqrt(x);
+			var res2 = _.Exp(x);
+			Assert.AreEqual("sqrt[x]", res1.ToString());
+			Assert.AreEqual("exp[x]", res2.ToString());
 		}
 		[TestMethod]
 		public void FunctionComposite()

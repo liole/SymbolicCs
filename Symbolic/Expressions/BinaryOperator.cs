@@ -17,12 +17,12 @@ namespace Symbolic.Expressions
 		public Expression Left
 		{
 			get => Arguments[0];
-			set => Arguments[0] = value;
+			protected set => Arguments[0] = value;
 		}
 		public Expression Right
 		{
 			get => Arguments[1];
-			set => Arguments[1] = value;
+			protected set => Arguments[1] = value;
 		}
 
 		public BinaryOperator(Expression left, Expression right):
