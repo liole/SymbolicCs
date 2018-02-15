@@ -27,6 +27,12 @@ namespace Symbolic.Operations
 		{
 			return 0;
 		}
+		public override Expression On(SymbolFunction e)
+		{
+			return e.Arguments
+				.Select((arg, i) => e.D(i) * _.D(arg, x))
+				.Aggregate((a, b) => a + b);
+		}
 		public override Expression On(Plus e)
 		{
 			return _.D(e.Left, x) + _.D(e.Right, x);

@@ -22,6 +22,7 @@ namespace Symbolic.Operations
 		public virtual Expression On(Real e) => On(e as Literal);
 		public virtual Expression On(Logical e) => On(e as Literal);
 		public virtual Expression On(Function e) => On(e as Expression);
+		public virtual Expression On(SymbolFunction e) => On(e as Function);
 		public virtual Expression On (Sin e) => On(e as Function);
 		public virtual Expression On(Cos e) => On(e as Function);
 		public virtual Expression On(Sqrt e) => On(e as Function);

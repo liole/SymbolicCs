@@ -52,6 +52,7 @@
     <Compile Include="Expressions\Literals\IConstant.cs" />
     <Compile Include="Expressions\Literals\Real.cs" />
     <Compile Include="Expressions\Operators\UnaryMinus.cs" />
+    <Compile Include="Expressions\SymbolFunction.cs" />
     <Compile Include="Expressions\UnaryOperator.cs" />
     <Compile Include="Expressions\Expression.cs" />
     <Compile Include="Expressions\Function.cs" />

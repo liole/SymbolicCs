@@ -25,5 +25,12 @@ namespace Symbolic.Operations
 				).ToArray()
 			) as Function;
 		}
+		public override Expression On(SymbolFunction e)
+		{
+			return new SymbolFunction(e,
+				e.Arguments.Select(a => a.Perform(
+					Activator.CreateInstance(this.GetType()) as Operation)
+				).ToArray());
+		}
 	}
 }

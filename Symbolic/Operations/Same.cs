@@ -53,5 +53,10 @@ namespace Symbolic.Operations
 			}
 			return false;
 		}
+		public override Expression On(SymbolFunction e)
+		{
+			return (bool)(On(e as Function) as Logical) && 
+				e.Derivatives.SequenceEqual((Source as SymbolFunction).Derivatives);
+		}
 	}
 }

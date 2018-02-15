@@ -64,5 +64,15 @@ namespace Symbolic.Tests
 			Assert.IsFalse(_.Same(_.Sin(x+2), _.Sin(1+5*x)));
 			Assert.IsTrue(_.Same(_.Sin(1+3*_.Cos(x)), _.Sin(1+3*_.Cos(x))));
 		}
+		[TestMethod]
+		public void SameSymbolFunction()
+		{
+			var x = new Symbol("x");
+			var f = new SymbolFunction("f", x).D();
+			var g = new SymbolFunction("f", x).D();
+			var h = new SymbolFunction("h", x);
+			Assert.IsTrue(_.Same(f, g));
+			Assert.IsFalse(_.Same(f, h));
+		}
 	}
 }

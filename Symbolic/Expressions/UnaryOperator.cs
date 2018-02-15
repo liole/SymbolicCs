@@ -14,12 +14,6 @@ namespace Symbolic.Expressions
 		public abstract int Priority { get; }
 		public override string Name => Sign;
 
-		public Expression Argument
-		{
-			get => Arguments[0];
-			set => Arguments[0] = value;
-		}
-
 		public UnaryOperator(Expression arg):
 			base(arg)
 		{
