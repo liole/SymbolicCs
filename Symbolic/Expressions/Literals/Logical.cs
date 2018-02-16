@@ -15,6 +15,18 @@ namespace Symbolic.Expressions.Literals
 		{
 			Value = val;
 		}
+		internal override int CompareTo(Literal e)
+		{
+			if (e is Logical)
+			{
+				return Value.CompareTo((e as Logical).Value);
+			}
+			else
+			{
+				// Real
+				return -1;
+			}
+		}
 
 		public static explicit operator bool(Logical src)
 		{

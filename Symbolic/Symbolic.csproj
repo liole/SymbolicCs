@@ -73,6 +73,8 @@
     <Compile Include="Operations\Clone.cs" />
     <Compile Include="Operations\Derivative.cs" />
     <Compile Include="Operations\Extensions.cs" />
+    <Compile Include="Operations\SortNodes.cs" />
+    <Compile Include="Operations\Normalize.cs" />
     <Compile Include="Operations\Operation.cs" />
     <Compile Include="Operations\Simplify.cs" />
     <Compile Include="Operations\Same.cs" />

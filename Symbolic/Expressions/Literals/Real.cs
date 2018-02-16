@@ -16,6 +16,19 @@ namespace Symbolic.Expressions.Literals
 			Value = val;
 		}
 
+		internal override int CompareTo(Literal e)
+		{
+			if (e is Real)
+			{
+				return Value.CompareTo((e as Real).Value);
+			}
+			else
+			{
+				// Logical
+				return 1;
+			}
+		}
+
 		public static explicit operator double(Real src)
 		{
 			return src.Value;

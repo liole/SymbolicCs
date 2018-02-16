@@ -15,10 +15,6 @@ namespace Symbolic
 		{
 			return (bool)(e1.Perform(new Same(e2)) as Logical);
 		}
-		public static Expression Clone(Expression e)
-		{
-			return e.Perform(new Clone());
-		}
 		public static Expression Calculate(Expression e)
 		{
 			return e.Perform(new Calculate());

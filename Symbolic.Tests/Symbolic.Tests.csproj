@@ -55,6 +55,7 @@
     <Compile Include="CalculateOperationTest.cs" />
     <Compile Include="SimplifyOperationTest.cs" />
     <Compile Include="DerivativeTest.cs" />
+    <Compile Include="CanonicalTest.cs" />
     <Compile Include="SymbolsTest.cs" />
     <Compile Include="OperatorsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

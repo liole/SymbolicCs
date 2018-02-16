@@ -9,6 +9,7 @@ namespace Symbolic.Expressions
 {
 	public abstract class Literal: Expression
 	{
+		internal abstract int CompareTo(Literal e);
 		public override Expression Perform(Operation operation)
 		{
 			return operation.On(this);
