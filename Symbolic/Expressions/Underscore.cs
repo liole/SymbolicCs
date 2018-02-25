@@ -1,6 +1,7 @@
 ﻿using Symbolic.Expressions;
 using Symbolic.Expressions.Functions;
 using Symbolic.Expressions.Literals.Constants;
+using Symbolic.Expressions.Operators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,5 +25,7 @@ namespace Symbolic
 		public static Expression Exp(Expression arg) => new Exp(arg);
 		public static Expression Ln(Expression arg) => new Ln(arg);
 		public static Expression Lg(Expression arg) => new Lg(arg);
+
+		public static Rule Rule(Expression src, Expression value) => new Rule(src, value);
 	}
 }

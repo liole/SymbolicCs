@@ -44,6 +44,7 @@ namespace Symbolic.Expressions
 		{
 			return new SymbolFunction(this, args);
 		}
+		public SymbolFunction this [params Expression[] args] => _(args);
 		public SymbolFunction D(int index = 0)
 		{
 			var f = new SymbolFunction(this, Arguments);

@@ -23,6 +23,13 @@ namespace Symbolic.Expressions
 		public static implicit operator Expression(double src) => (Real)src;
 		public static implicit operator Expression(bool src) => (Logical)src;
 
+		public static implicit operator int(Expression e)
+		{
+			var hash = e.GetHashCode();
+			Rule.HashTable[hash] = e;
+			return hash;
+		}
+
 		public static Expression operator +(Expression left, Expression right)
 		{
 			return new Plus(left, right);
@@ -42,6 +49,16 @@ namespace Symbolic.Expressions
 		public static Expression operator -(Expression arg)
 		{
 			return new UnaryMinus(arg);
+		}
+
+		public static Expression operator ~(Expression arg)
+		{
+			return new Pattern(arg);
+		}
+
+		public static Rule operator >>(Expression left, int right)
+		{
+			return new Rule(left, right);
 		}
 	}
 }

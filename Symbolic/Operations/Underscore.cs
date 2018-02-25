@@ -1,5 +1,6 @@
 ﻿using Symbolic.Expressions;
 using Symbolic.Expressions.Literals;
+using Symbolic.Expressions.Operators;
 using Symbolic.Operations;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace Symbolic
 		}
 		public static Expression Simplify(Expression e)
 		{
-			return e.Perform(new Simplify());
+			return e.Canonical().Perform(new Simplify()).Canonical();
 		}
 		public static Expression Derivative(Expression e, Symbol var)
 		{
@@ -43,6 +44,14 @@ namespace Symbolic
 		public static Expression D(Expression e)
 		{
 			return Derivative(e);
+		}
+		public static bool Equal(Expression e1, Expression e2)
+		{
+			return _.Same(e1.Simplify(), e2.Simplify());
+		}
+		public static Expression Replace(Expression e, params Rule[] rules)
+		{
+			return e.Simplify().Perform(new Replace(rules)).Simplify();
 		}
 	}
 }

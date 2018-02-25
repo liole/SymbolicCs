@@ -46,7 +46,7 @@ namespace Symbolic.Tests
 
 			var x = new Symbol("x");
 			Assert.IsTrue(_.Same(_.Sin(x)+x*_.Cos(x), _.D(x*_.Sin(x))));
-			Assert.IsTrue(_.Same((_.Cos(x)*x-_.Sin(x))/_.Pow(x,2), _.D(_.Sin(x)/x)));
+			Assert.IsTrue(_.Same((x*_.Cos(x)-_.Sin(x))/_.Pow(x,2), _.D(_.Sin(x)/x)));
 		}
 		[TestMethod]
 		public void DerivativeExponentioal()
@@ -57,7 +57,7 @@ namespace Symbolic.Tests
 			Assert.IsTrue(_.Same(1/(2*_.Sqrt(x)), _.D(_.Sqrt(x))));
 			Assert.IsTrue(_.Same(_.Exp(x), _.D(_.Exp(x))));
 			// not yet: Assert.IsTrue(_.Same(_.Pow(x,x)*(1+_.Ln(x)),
-			Assert.IsTrue(_.Same(_.Pow(x,x-1)*(x+x*_.Ln(x)),
+			Assert.IsTrue(_.Same((x+x*_.Ln(x))*_.Pow(x,x-1),
 				_.D(_.Pow(x, x))));
 		}
 		[TestMethod]
@@ -83,7 +83,7 @@ namespace Symbolic.Tests
 			var y = new Symbol("y");
 			var f = new SymbolFunction("f", x, 2*x, y, _.Pow(x,2));
 			Assert.AreEqual(
-				"f<1,0,0,0>[x,2*x,y,pow[x,2]]+f<0,1,0,0>[x,2*x,y,pow[x,2]]*2+f<0,0,0,1>[x,2*x,y,pow[x,2]]*2*x",
+				"f<1,0,0,0>[x,2*x,y,pow[x,2]]+2*f<0,1,0,0>[x,2*x,y,pow[x,2]]+2*x*f<0,0,0,1>[x,2*x,y,pow[x,2]]",
 				_.D(f, x).ToString()
 			);
 			// needs canonical form (not the same tree, yet the same expression)
@@ -100,7 +100,7 @@ namespace Symbolic.Tests
 			var g = new SymbolFunction("g", x);
 			Assert.AreEqual("f'[x]*g[x]+f[x]*g'[x]", 
 				_.D(f*g).ToString());
-			Assert.AreEqual("pow[f[x],g[x]-1]*(f'[x]*g[x]+f[x]*g'[x]*ln[f[x]])",
+			Assert.AreEqual("(f'[x]*g[x]+f[x]*g'[x]*ln[f[x]])*pow[f[x],g[x]-1]",
 				_.D(_.Pow(f, g)).ToString());
 		}
 	}

@@ -1,4 +1,6 @@
 ﻿using Symbolic.Expressions;
+using Symbolic.Expressions.Literals;
+using Symbolic.Expressions.Operators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +44,22 @@ namespace Symbolic.Operations
 		public static Expression Canonical(this Expression e)
 		{
 			return e.Normalize().Perform(new SortNodes());
+		}
+		public static bool Match(this Expression p, Expression e, out Rule[] rules)
+		{
+			var op = new Similar(e.Simplify());
+			var res = p.Simplify().Perform(op);
+			rules = op.Rules.ToArray();
+			return (bool)(res as Logical);
+		}
+		public static bool Match(this Expression p, Expression e)
+		{
+			Rule[] rules;
+			return p.Match(e, out rules);
+		}
+		public static Expression Replace(this Expression e, params Rule[] rules)
+		{
+			return _.Replace(e, rules);
 		}
 	}
 }

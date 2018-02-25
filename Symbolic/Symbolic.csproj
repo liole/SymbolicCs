@@ -51,6 +51,8 @@
     <Compile Include="Expressions\Literals\Constants\One.cs" />
     <Compile Include="Expressions\Literals\IConstant.cs" />
     <Compile Include="Expressions\Literals\Real.cs" />
+    <Compile Include="Expressions\Operators\Rule.cs" />
+    <Compile Include="Expressions\Operators\Pattern.cs" />
     <Compile Include="Expressions\Operators\UnaryMinus.cs" />
     <Compile Include="Expressions\SymbolFunction.cs" />
     <Compile Include="Expressions\UnaryOperator.cs" />
@@ -69,10 +71,12 @@
     <Compile Include="Expressions\Operators\Plus.cs" />
     <Compile Include="Expressions\SeparatorType.cs" />
     <Compile Include="Expressions\ParentesisType.cs" />
+    <Compile Include="Operations\Replace.cs" />
     <Compile Include="Operations\Calculate.cs" />
     <Compile Include="Operations\Clone.cs" />
     <Compile Include="Operations\Derivative.cs" />
     <Compile Include="Operations\Extensions.cs" />
+    <Compile Include="Operations\Similar.cs" />
     <Compile Include="Operations\SortNodes.cs" />
     <Compile Include="Operations\Normalize.cs" />
     <Compile Include="Operations\Operation.cs" />
