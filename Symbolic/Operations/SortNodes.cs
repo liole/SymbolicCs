@@ -30,6 +30,62 @@ namespace Symbolic.Operations
 			}
 			return e.Left * e.Right;
 		}
+		//public override Expression On(Plus e)
+		//{
+		//	return OnPlusMinus(e);
+		//}
+		//public override Expression On(Minus e)
+		//{
+		//	return OnPlusMinus(e);
+		//}
+		public Expression OnPlusMinus(BinaryOperator e)
+		{
+			var plus = e is Plus;
+			if (e.Left is Plus || e.Left is Minus)
+			{
+				var left = e.Left.Perform(new SortNodes()) as BinaryOperator;
+				var leftPlus = left is Plus;
+				var right = e.Right;
+				var cmp = Compare(left.Right, e.Right);
+				if (cmp > 0 || cmp==0 && plus && !leftPlus)
+				{
+					right = left.Right;
+					left = OpPM(plus, left.Left, e.Right).Perform(new SortNodes()) as BinaryOperator;
+					plus = leftPlus;
+				}
+				return OpPM(plus, left, right);
+			}
+			var leftArg = e.Left;
+			var unaryM = leftArg is UnaryMinus;
+			if (unaryM)
+			{
+				leftArg = (leftArg as UnaryMinus).Argument;
+			}
+			var cmpU = Compare(leftArg, e.Right);
+			if (cmpU > 0 || cmpU == 0 && plus && unaryM)
+			{
+				if (plus)
+				{
+					return OpPM(!unaryM, e.Right, leftArg);
+				}
+				else
+				{
+					return OpPM(!unaryM, -e.Right, leftArg); ;
+				}
+			}
+			return OpPM(plus, e.Left, e.Right);
+		}
+		public BinaryOperator OpPM(bool plus, Expression a, Expression b)
+		{
+			if (plus)
+			{
+				return a + b as BinaryOperator;
+			}
+			else
+			{
+				return a - b as BinaryOperator;
+			}
+		}
 		public static int Compare(Expression a, Expression b)
 		{
 			if (a is Literal)

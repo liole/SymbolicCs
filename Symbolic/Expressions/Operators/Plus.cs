@@ -11,6 +11,7 @@ namespace Symbolic.Expressions.Operators
 	{
 		public override string Sign => "+";
 		public override int Priority => 1;
+		public override bool Associative => true;
 
 		public Plus(Expression left, Expression right) :
 			base(left, right)

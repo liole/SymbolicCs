@@ -22,6 +22,7 @@ namespace Symbolic.Tests
 		{
 			var x = new Symbol("x");
 			var y = new Integer(-1);
+			var res = _.Simplify(x + (1 + y));
 			Assert.IsTrue(_.Same(x, _.Simplify(x+(1+y))));
 		}
 		[TestMethod]

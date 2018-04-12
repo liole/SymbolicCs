@@ -27,6 +27,15 @@ namespace Example
 			Console.WriteLine(res4.ToString());
 			var res5 = res1.Replace(f[2*~x] >> Pow(x, 3));
 			Console.WriteLine(res5.ToString());
+			var res6 = (x + 2 * x - Pow(x, 2)+Sin(x)).Replace(x >> -4);
+			Console.WriteLine(res6.ToString());
+			var y  = new Symbol("y");
+			var res7 = -x + 2 - 4+3*x + y - 5 - (-x) +1-1;
+			Console.WriteLine(res7.Canonical().ToString());
+			var res8 = res7.Simplify();
+			Console.WriteLine(res8.Canonical().ToString());
+			var res9 = ((x + 1) + 2).Replace((Expression)1+2 >> 5);
+			Console.WriteLine(res9.ToString());
 		}
 	}
 }

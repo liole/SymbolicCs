@@ -51,6 +51,7 @@
     <Compile Include="Expressions\Literals\Constants\One.cs" />
     <Compile Include="Expressions\Literals\IConstant.cs" />
     <Compile Include="Expressions\Literals\Real.cs" />
+    <Compile Include="Expressions\Operators\TypePattern.cs" />
     <Compile Include="Expressions\Operators\Rule.cs" />
     <Compile Include="Expressions\Operators\Pattern.cs" />
     <Compile Include="Expressions\Operators\UnaryMinus.cs" />

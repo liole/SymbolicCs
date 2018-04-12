@@ -61,5 +61,59 @@ namespace Symbolic.Operations
 			}
 			return left / right;
 		}
+		public override Expression On(Plus e)
+		{
+			var left = e.Left;
+			var right = e.Right.Normalize();
+			var plus = true;
+			if (right is Plus || right is Minus)
+			{
+				plus = right is Plus;
+				var binOp = right as BinaryOperator;
+				left = left + binOp.Left;
+				right = binOp.Right;
+			}
+			while (right is UnaryMinus)
+			{
+				plus = !plus;
+				right = (right as UnaryMinus).Argument;
+			}
+			left = left.Normalize();
+			if (plus)
+			{
+				return left + right;
+			}
+			else
+			{
+				return left - right;
+			}
+		}
+		public override Expression On(Minus e)
+		{
+			var left = e.Left;
+			var right = e.Right.Normalize();
+			var minus = true;
+			if (right is Plus || right is Minus)
+			{
+				minus = right is Plus;
+				var binOp = right as BinaryOperator;
+				left = left + binOp.Left;
+				right = binOp.Right;
+			}
+			while (right is UnaryMinus)
+			{
+				minus = !minus;
+				right = (right as UnaryMinus).Argument;
+			}
+			left = left.Normalize();
+			if (minus)
+			{
+				return left - right;
+			}
+			else
+			{
+				return left + right;
+			}
+		}
 	}
 }

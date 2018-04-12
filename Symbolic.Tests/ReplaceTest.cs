@@ -73,5 +73,13 @@ namespace Symbolic.Tests
 			Assert.IsTrue(_.Same(4*x, (f.D()._(2*x)).Replace(
 				new Rule(f._(~x), _.Pow(x, 2)))));
 		}
+		[TestMethod]
+		public void RuloOperator()
+		{
+			var x = new Symbol("x");
+			var rule = x >> 1;
+			Assert.IsInstanceOfType(rule, typeof(Rule));
+			Assert.IsTrue(_.Same(new Rule(x, 1), rule));
+		}
 	}
 }

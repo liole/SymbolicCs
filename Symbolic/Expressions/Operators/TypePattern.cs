@@ -7,16 +7,21 @@ using System.Threading.Tasks;
 
 namespace Symbolic.Expressions.Operators
 {
-	public class Times : BinaryOperator
+	public class TypePattern: Pattern
 	{
-		public override string Sign => "*";
-		public override int Priority => 3;
+		public override string Sign => $"~<{Type.Name}>";
+		public override int Priority => 0;
 
-		public override bool Associative => true;
+		public Type Type { get; set; }
 
-		public Times(Expression left, Expression right) :
-			base(left, right)
+		public TypePattern(Expression arg) :
+			base(arg)
 		{
+		}
+		public TypePattern(Expression arg, Type type) :
+			base(arg)
+		{
+			Type = type;
 		}
 		public override Expression Perform(Operation operation)
 		{

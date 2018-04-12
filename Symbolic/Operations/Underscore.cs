@@ -53,5 +53,13 @@ namespace Symbolic
 		{
 			return e.Simplify().Perform(new Replace(rules)).Simplify();
 		}
+		public static Expression Integer(Expression e)
+		{
+			return new TypePattern(e, typeof(Integer));
+		}
+		public static Expression any<T>(Expression e)
+		{
+			return new TypePattern(e, typeof(T));
+		}
 	}
 }

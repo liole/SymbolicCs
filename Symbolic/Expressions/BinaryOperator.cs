@@ -13,6 +13,7 @@ namespace Symbolic.Expressions
 		public abstract string Sign { get; }
 		public abstract int Priority { get; }
 		public override string Name => Sign;
+		public virtual bool Associative => false;
 
 		public Expression Left
 		{

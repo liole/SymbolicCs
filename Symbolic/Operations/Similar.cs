@@ -24,6 +24,31 @@ namespace Symbolic.Operations
 			Rules.Add(new Rule(e.Argument, Source));
 			return true;
 		}
+		public override Expression On(TypePattern e)
+		{
+			if (e.Type.IsInstanceOfType(Source))
+			{
+				Rules.Add(new Rule(e.Argument, Source));
+				return true;
+			}
+			return base.On(e);
+		}
+
+		//public override Expression On(BinaryOperator e)
+		//{
+		//	return (bool)(On(e as Function) as Logical) || (
+		//		Source.GetType() == e.GetType() && e.Associative && (
+		//		e.Left.GetType() == e.GetType() && (bool)(On(Activator.CreateInstance(
+		//			e.GetType(),
+		//			(e.Left as BinaryOperator).Left,
+		//			Activator.CreateInstance(
+		//				e.GetType(),
+		//				(e.Left as BinaryOperator).Right,
+		//				e.Right
+		//			) as Expression) as Expression) as Logical) ||
+				
+		//		);
+		//}
 
 		public override Expression On(Function e)
 		{

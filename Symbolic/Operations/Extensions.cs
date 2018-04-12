@@ -57,6 +57,24 @@ namespace Symbolic.Operations
 			Rule[] rules;
 			return p.Match(e, out rules);
 		}
+		public static Literal Coefficient(Expression e, out Expression body)
+		{
+			Rule[] rules;
+			var c = new Symbol("c");
+			var x = new Symbol("x");
+			if ((_.any<Literal>(c)*(~x)).Match(e, out rules))
+			{
+				body = rules.Where(r => r.Left == x).Single().Right;
+				return rules.Where(r => r.Left == c).Single().Right as Literal;
+			}
+			body = e.Clone();
+			return _.One as Literal;
+		}
+		public static Literal Coefficient(Expression e)
+		{
+			Expression body;
+			return Coefficient(e, out body);
+		}
 		public static Expression Replace(this Expression e, params Rule[] rules)
 		{
 			return _.Replace(e, rules);

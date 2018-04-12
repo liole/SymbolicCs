@@ -67,6 +67,18 @@ namespace Symbolic.Operations
 				{
 					return resB.Left;
 				}
+				if (_.Equal(resB.Left, resB.Right))
+				{
+					return 0;
+				}
+				if (resB.Left is Plus)
+				{
+					var leftB = resB.Left as BinaryOperator;
+					if (_.Equal(leftB.Right, resB.Right))
+					{
+						return leftB.Left;
+					}
+				}
 			}
 			return res;
 		}

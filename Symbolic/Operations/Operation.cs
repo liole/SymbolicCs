@@ -39,6 +39,7 @@ namespace Symbolic.Operations
 		public virtual Expression On(UnaryOperator e) => On(e as Function);
 		public virtual Expression On(UnaryMinus e) => On(e as UnaryOperator);
 		public virtual Expression On(Pattern e) => On(e as UnaryOperator);
+		public virtual Expression On(TypePattern e) => On(e as Pattern);
 		public virtual Expression On(Rule e) => On(e as BinaryOperator);
 	}
 }
